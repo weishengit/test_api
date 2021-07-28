@@ -2,7 +2,7 @@
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$dbname = 'test_api';
+$dbname = 'realestate';
 
 $conn = mysqli_connect($host, $user, $pass, $dbname);
 if (!$conn) {
