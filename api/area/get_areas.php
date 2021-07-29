@@ -76,7 +76,7 @@ try {
     $index = 0;
     while($index < $total_pages) {
         $pages[$index] = [
-            $index + 1 => "$_SERVER[SERVER_NAME]/api_test/api/area/get_areas.php?page=" . $index + 1 . "&rows=$LIMIT"
+            $index + 1 => "http://$_SERVER[SERVER_NAME]/api_test/api/area/get_areas.php?page=" . $index + 1 . "&rows=$LIMIT"
         ];
         $index++;
     }
@@ -87,7 +87,9 @@ try {
         'links' => $links,
         'pages' => $pages,
         'meta' => [
-            'current_page' => $PAGE, 
+            'url' => "http://$_SERVER[SERVER_NAME]/api_test/api/area/get_areas.php",
+            'current_page' => $PAGE,
+            'rows' => $LIMIT,
             'total_rows' => $total_rows,
             'total_pages' => $total_pages
         ]

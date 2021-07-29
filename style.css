@@ -31,6 +31,34 @@ table, th, td {
     border: 1px solid black;
 }
 
+#page-count {
+    font-size: 0.8em;
+}
+
 #pagination {
     margin-top: 2rem;
+}
+
+#snackbar {
+    background: #555;
+    color: white;
+    padding: 10px;
+    display: inline-block;
+    position: fixed;
+    bottom: 20px;
+    left: 45%;
+    transform: translate(-45%, 200px);
+    transform: all 300ms;
+}
+
+#snackbar.show {
+    transform: translateY(0);
+}
+
+#reload-btn {
+    display: none;
+}
+
+#reload-btn.show {
+    display: inline-block;
 }

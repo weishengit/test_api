@@ -13,13 +13,13 @@ require 'core/Database.php';
 </head>
 <body>
     <header>
-        <h1>Pagination</h1>
+        <h1>Pagination</h1><button id="reload-btn">*</button><span id="reload"></span>
     </header>
+    <div id="snackbar"></div>
     <main>
-        <p id="flash"></p>
         <table>
             <thead>
-                <tr>
+                <tr id="table-header">
                     <th>ID</th>
                     <th>Name</th>
                     <th>Created</th>
@@ -27,17 +27,19 @@ require 'core/Database.php';
                 </tr>
             </thead>
             <tbody id="table-body">
-                <tr>
-                    <td>1</td>
-                    <td>Tae</td>
-                    <td>2020</td>
-                    <td>2021</td>
-                </tr>
+                
             </tbody>
         </table>
         <hr>
-        <div class="pagenumber" id="pagination">
-
+        <div id="pagination">
+            <span id="total-count"></span>
+            <button id="first-page"> << </button>
+            <button id="prev-page"> Prev </button>
+            <input id="current-page" type="text" style="width: 3%;">
+            <span id="page-count"></span>
+            <button id="next-page"> Next </button>
+            <button id="last-page"> >> </button>
+            <button id="jump-page"> Jump </button>
         </div>
     </main>
 
