@@ -1,9 +1,17 @@
-const API_URL = 'http://localhost/api_test/api/area/get_areas.php';
+let url_string = window.location.href;
+let url = new URL(url_string);
+let page = url.searchParams.get("page");
+let page_num = "";
+
+if(page != null){
+    page_num = "?page="+page;
+    history.pushState({page},'',window.location)
+}
+
+const API_URL = 'http://localhost/api_test/api/area/get_areas.php'+page_num;
 const FLASH_MESSAGE = document.querySelector('#flash');
 const Pagination = document.querySelector('#pagination');
 const table = document.querySelector('#table-body');
-
-
 
 function fetchData (url) {
     fetch(url)
@@ -57,18 +65,34 @@ function fetchData (url) {
 
             first_page.addEventListener('click', e => {
                 fetchData(data.links.first)
+                const url = new URL(window.location);
+                let page_num = parseInt(api.meta.current_page) + 1;
+                url.searchParams.set('page', page_num);
+                window.history.pushState({page_num}, '', url);
             });
 
             prev_page.addEventListener('click', e => {
                 fetchData(data.links.prev)
+                const url = new URL(window.location);
+                let page_num = parseInt(api.meta.current_page) + 1;
+                url.searchParams.set('page', page_num);
+                window.history.pushState({page_num}, '', url);
             });
 
             next_page.addEventListener('click', e => {
                 fetchData(data.links.next)
+                const url = new URL(window.location);
+                let page_num = parseInt(api.meta.current_page) + 1;
+                url.searchParams.set('page', page_num);
+                window.history.pushState({page_num}, '', url);
             });
 
             last_page.addEventListener('click', e => {
                 fetchData(data.links.last)
+                const url = new URL(window.location);
+                let page_num = parseInt(api.meta.current_page) + 1;
+                url.searchParams.set('page', page_num);
+                window.history.pushState({page_num}, '', url);
             });
         })
         .catch(error => {
@@ -77,3 +101,7 @@ function fetchData (url) {
 }
 
 fetchData(API_URL);
+
+window.addEventListener('popstate', evt => {
+    fetchData(API_URL);
+})
